@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 from app import server
 from app import app
 # import all pages in the app
-from apps import home, cinematheque_catalog,cinematheque_kpi,movision,projet
+from apps import contexte, home, projet, solutions
 
 # building the navigation bar
 # https://github.com/facultyai/dash-bootstrap-components/blob/master/examples/advanced-component-usage/Navbars.py
@@ -16,13 +16,12 @@ navbar = dbc.NavbarSimple(
 
 
     children=[
-        dbc.NavItem(dbc.NavLink("Cinémathèque", href="/cinematheque_catalog")),
-        dbc.NavItem(dbc.NavLink("Dataviz", href="/cinematheque_kpi")),
-        dbc.NavItem(dbc.NavLink("Movision", href="/movision")),
-        dbc.NavItem(dbc.NavLink("Le projet", href="/projet")),
+        dbc.NavItem(dbc.NavLink("Le contexte", href="/contexte")),
+        dbc.NavItem(dbc.NavLink("Les solutions", href="/solutions")),
+        dbc.NavItem(dbc.NavLink("Team Thanos", href="/projet")),
 
     ],
-    brand="Les Bobines creuses",
+    brand="Team Thanos",
     brand_href="/home",
     color="warning",
     dark=False,
@@ -42,12 +41,10 @@ app.layout = html.Div([
 def display_page(pathname):
     if pathname == '/home':
         return home.layout
-    elif pathname == '/cinematheque_catalog':
-        return cinematheque_catalog.layout
-    elif pathname == '/cinematheque_kpi':
-        return cinematheque_kpi.layout
-    elif pathname == '/movision':
-        return movision.layout
+    elif pathname == '/solutions':
+        return solutions.layout
+    elif pathname == '/contexte':
+        return contexte.layout
     elif pathname == '/projet':
         return projet.layout
     else:
